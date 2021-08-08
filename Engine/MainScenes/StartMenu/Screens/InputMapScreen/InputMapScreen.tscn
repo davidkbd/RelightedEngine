@@ -1,0 +1,164 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Engine/Hud/Ttf/aire_exterior/AireExterior.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Engine/MainScenes/StartMenu/OptionElement/OptionElement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Engine/MainScenes/StartMenu/InputEventJsonTransformer.gd" type="Script" id=4]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Screens/InputMapScreen/InputMapScreen.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 16
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "start"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 2, 2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "stop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2, 0.4 ),
+"transitions": PoolRealArray( 2, 2 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_animation_end_stop"
+} ]
+}
+
+[node name="InputMapScreen" type="Control" groups=[
+"MENU_LISTENER",
+"SETTINGS_LISTENER",
+]]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputEventJsonTransformer" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "menu.input_map"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="VBoxContainer" parent="."]
+anchor_left = 0.35
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputMapJump" parent="Options" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 665.0
+margin_bottom = 72.0
+text = "menu.input_map.jump"
+method_name = "menu_listener_on_input_jump_pressed"
+
+[node name="Value" type="Label" parent="Options/InputMapJump"]
+margin_left = 372.0
+margin_right = 665.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "Z"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputMapSpindash" parent="Options" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 76.0
+margin_right = 665.0
+margin_bottom = 148.0
+text = "menu.input_map.spindash"
+method_name = "menu_listener_on_input_spindash_pressed"
+
+[node name="Value" type="Label" parent="Options/InputMapSpindash"]
+margin_left = 392.0
+margin_right = 665.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+text = "X"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" parent="Options" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 152.0
+margin_right = 665.0
+margin_bottom = 224.0
+text = "menu.back"
+method_name = "menu_listener_on_options_opened"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/start = SubResource( 3 )
+anims/stop = SubResource( 4 )
+
+[connection signal="pressed" from="Options/InputMapJump" to="." method="_any_button_pressed"]
+[connection signal="pressed" from="Options/InputMapSpindash" to="." method="_any_button_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_any_button_pressed"]

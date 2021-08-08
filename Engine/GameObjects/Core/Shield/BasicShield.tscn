@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Engine/BaiscMaterial/BasicShield.material" type="Material" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.5
+height = 1.0
+
+[node name="BasicShield" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
+use_in_baked_light = true
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )

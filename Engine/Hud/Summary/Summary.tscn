@@ -1,0 +1,286 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Engine/Hud/Summary/Summary.gd" type="Script" id=1]
+[ext_resource path="res://Engine/Hud/Ttf/BigTeezSqfinal.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Engine/Hud/Ttf/aire_exterior/AireExterior.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Engine/Hud/Texture/Ranks/RankE.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "show"
+length = 12.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 4, 5.5, 7, 8.5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_process"
+}, {
+"args": [  ],
+"method": "_rings_to_score"
+}, {
+"args": [  ],
+"method": "_rank"
+}, {
+"args": [  ],
+"method": "_rank_to_score"
+}, {
+"args": [  ],
+"method": "done"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Congratulations:anchor_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 2.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 0.0, -1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Congratulations:anchor_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 2.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 1.0, 1.0, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ZoneAct:anchor_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0, 0.0, 1.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("ZoneAct:anchor_right")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7, 2.6, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 2.0, 1.0, 1.0, 2.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("RestTime:anchor_left")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3.4, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.1, 1.1, 0.6 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Rings:anchor_left")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 3.2, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.1, 1.1, 0.6 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Score:anchor_left")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 3.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.1, 1.1, 0.6 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("ElapsedTime:anchor_left")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 3.6, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.1, 1.1, 0.6 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("StatsBackground:anchor_left")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2.9, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.1, 1.1, 0.6 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("StatsBackground:anchor_right")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2.9, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.5, 1.5, 1.0 ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 38
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[node name="Summary" type="Control" groups=[
+"GAME_LISTENER",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/show = SubResource( 1 )
+
+[node name="Congratulations" type="Label" parent="."]
+anchor_left = -1.0
+anchor_top = 0.1
+anchor_bottom = 0.3
+custom_fonts/font = SubResource( 2 )
+text = "Congratulations!!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ZoneAct" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 0.3
+anchor_right = 2.0
+anchor_bottom = 0.4
+custom_fonts/font = SubResource( 2 )
+text = "Zone 1-1 Clear!!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsBackground" type="TextureRect" parent="."]
+anchor_left = 0.6
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.7
+margin_left = -10.0
+margin_top = -10.0
+margin_right = -10.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rings" type="Label" parent="."]
+anchor_left = 0.6
+anchor_top = 0.2
+anchor_right = 2.0
+anchor_bottom = 0.3
+custom_fonts/font = SubResource( 3 )
+text = "Rings:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestTime" type="Label" parent="."]
+anchor_left = 0.6
+anchor_top = 0.3
+anchor_right = 2.0
+anchor_bottom = 0.4
+custom_fonts/font = SubResource( 3 )
+text = "Time:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ElapsedTime" type="Label" parent="."]
+anchor_left = 0.6
+anchor_top = 0.4
+anchor_right = 2.0
+anchor_bottom = 0.5
+custom_fonts/font = SubResource( 3 )
+text = "Time:"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rank" type="TextureRect" parent="ElapsedTime"]
+anchor_left = 0.25
+anchor_right = 0.25
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 4
+
+[node name="Score" type="Label" parent="."]
+anchor_left = 0.6
+anchor_top = 0.5
+anchor_right = 2.0
+anchor_bottom = 0.6
+custom_fonts/font = SubResource( 3 )
+text = "Score:"
+valign = 1
+
+[node name="Tween" type="Tween" parent="."]

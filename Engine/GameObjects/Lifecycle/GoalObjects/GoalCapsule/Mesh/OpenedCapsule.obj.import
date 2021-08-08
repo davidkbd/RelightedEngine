@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/OpenedCapsule.obj-e1a0f60a1d1f560e59a1004a3640b2e0.mesh"
+
+[deps]
+
+files=[ "res://.import/OpenedCapsule.obj-e1a0f60a1d1f560e59a1004a3640b2e0.mesh" ]
+
+source_file="res://Engine/GameObjects/Lifecycle/GoalObjects/GoalCapsule/Mesh/OpenedCapsule.obj"
+dest_files=[ "res://.import/OpenedCapsule.obj-e1a0f60a1d1f560e59a1004a3640b2e0.mesh", "res://.import/OpenedCapsule.obj-e1a0f60a1d1f560e59a1004a3640b2e0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 2, 2, 2 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

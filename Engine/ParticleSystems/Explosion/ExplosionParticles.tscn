@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Engine/ParticleSystems/Explosion/Material/ExplosionParticles.material" type="Material" id=1]
+[ext_resource path="res://Engine/ParticleSystems/Explosion/ExplosionParticles.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 0.919291, 0.95509 ), 0.158433, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.111111, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.898148, 1, 1, 1, 0 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 1
+
+[sub_resource type="QuadMesh" id=5]
+size = Vector2( 0.1, 0.1 )
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.0740741, 0.666667, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0.9375, 0, 1, 1, 0, 0, 0.82251, 1, 0, 0, 0 )
+
+[node name="ExplosionParticles" type="CPUParticles"]
+material_override = ExtResource( 1 )
+emitting = false
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+local_coords = false
+mesh = SubResource( 1 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.2, 0.2, 0.4 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.6
+linear_accel = -0.5
+scale_amount_curve = SubResource( 2 )
+color_ramp = SubResource( 3 )
+script = ExtResource( 2 )
+
+[node name="FireParticles" type="CPUParticles" parent="."]
+material_override = SubResource( 4 )
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+mesh = SubResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3( 0, 1, 0 )
+spread = 90.0
+gravity = Vector3( 0, -6, 0 )
+initial_velocity = 4.0
+color_ramp = SubResource( 6 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="OmniLight" type="OmniLight" parent="."]
+omni_attenuation = 2.0
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

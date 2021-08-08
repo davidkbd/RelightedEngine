@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Engine/Hud/Ttf/aire_exterior/AireExterior.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Engine/Hud/Rings/Rings.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Rings" type="HBoxContainer" groups=[
+"GAME_LISTENER",
+"PLAYER_LISTENER",
+]]
+margin_left = 10.0
+margin_top = 45.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 78.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 1 )
+text = "hud.rings"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rings" type="Label" parent="."]
+margin_left = 82.0
+margin_right = 92.0
+margin_bottom = 25.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

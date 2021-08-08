@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Engine/MainScenes/LevelSelector/DefaultLevelSelectorContent.gd" type="Script" id=1]
+
+[node name="DefaultLevelSelectorContent" type="Control" groups=[
+"MENU_LISTENER",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+follow_focus = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelButtons" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 819.2
+margin_bottom = 480.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+anchor_left = 0.9
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="BackButton" to="." method="_on_BackButton_pressed"]

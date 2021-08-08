@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Engine/MainScenes/StartMenu/Slots/SlotSlotElement/SlotElement.gd" type="Script" id=1]
+[ext_resource path="res://Engine/MainScenes/StartMenu/OptionElement/OptionElement.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Engine/Hud/Ttf/aire_exterior/AireExterior.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="SlotElement" type="Control" groups=[
+"MENU_LISTENER",
+]]
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectionFrame" type="NinePatchRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="NotSelectedFrame" type="NinePatchRect" parent="."]
+modulate = Color( 0.0627451, 0.164706, 0.341176, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Image" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Option" parent="." instance=ExtResource( 2 )]
+visible = false
+anchor_top = 1.0
+margin_top = -72.0
+text = "1"
+method_name = "menu_listener_on_slot_selected"
+
+[node name="EmptyLabel" type="Label" parent="."]
+visible = false
+margin_right = 203.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "menu.slots.empty"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteLabel" type="Label" parent="."]
+visible = false
+margin_right = 203.0
+margin_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+text = "menu.slots.remove"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExecTween" type="Tween" parent="."]
+
+[connection signal="pressed" from="Option" to="." method="_on_Option_pressed"]

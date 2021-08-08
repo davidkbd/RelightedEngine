@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Engine/Hud/FadeScreen/FadeScreen.gd" type="Script" id=1]
+
+[node name="FadeScreen" type="ColorRect" groups=[
+"GAME_LISTENER",
+"MENU_LISTENER",
+"PLAYER_LISTENER",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]

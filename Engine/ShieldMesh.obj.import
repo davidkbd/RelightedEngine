@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/ShieldMesh.obj-d0e7271ba99d942c10d2eeffade6dbf0.mesh"
+
+[deps]
+
+files=[ "res://.import/ShieldMesh.obj-d0e7271ba99d942c10d2eeffade6dbf0.mesh" ]
+
+source_file="res://Engine/ShieldMesh.obj"
+dest_files=[ "res://.import/ShieldMesh.obj-d0e7271ba99d942c10d2eeffade6dbf0.mesh", "res://.import/ShieldMesh.obj-d0e7271ba99d942c10d2eeffade6dbf0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,200 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://Engine/Characters/Sonic/Glb/Sonic.glb" type="PackedScene" id=1]
+[ext_resource path="res://Engine/Characters/Sonic/SonicGlb.gd" type="Script" id=2]
+
+[sub_resource type="AnimationNodeAnimation" id=1]
+animation = "Damage"
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "Death"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "FallDown-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "FallUp-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Roll-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "Run-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "Walk-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=49]
+animation = "WalkSlow-loop"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=8]
+blend_point_0/node = SubResource( 7 )
+blend_point_0/pos = 1.0
+blend_point_1/node = SubResource( 48 )
+blend_point_1/pos = 0.5
+blend_point_2/node = SubResource( 49 )
+blend_point_2/pos = 0.0
+
+[sub_resource type="AnimationNodeTimeScale" id=9]
+
+[sub_resource type="AnimationNodeBlendTree" id=10]
+nodes/BlendSpace1D/node = SubResource( 8 )
+nodes/BlendSpace1D/position = Vector2( 53.3333, 80 )
+nodes/TimeScale/node = SubResource( 9 )
+nodes/TimeScale/position = Vector2( 293.333, 80 )
+nodes/output/position = Vector2( 533.333, 80 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "BlendSpace1D" ]
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Roll-loop"
+
+[sub_resource type="AnimationNodeTimeScale" id=12]
+
+[sub_resource type="AnimationNodeBlendTree" id=13]
+nodes/Animation/node = SubResource( 11 )
+nodes/Animation/position = Vector2( 80, 80 )
+nodes/TimeScale/node = SubResource( 12 )
+nodes/TimeScale/position = Vector2( 249.667, 100.333 )
+nodes/output/position = Vector2( 426.667, 80 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "WinF"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=15]
+blend_point_0/node = SubResource( 14 )
+blend_point_0/pos = 0.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id=46]
+states/Damage/node = SubResource( 1 )
+states/Damage/position = Vector2( -31.6667, 204.333 )
+states/Death/node = SubResource( 2 )
+states/Death/position = Vector2( 461.556, -142.91 )
+states/FallDown/node = SubResource( 3 )
+states/FallDown/position = Vector2( 203, -25 )
+states/FallUp/node = SubResource( 4 )
+states/FallUp/position = Vector2( 185, -100.667 )
+states/Idle/node = SubResource( 5 )
+states/Idle/position = Vector2( 36.333, 64.3828 )
+states/Jump/node = SubResource( 6 )
+states/Jump/position = Vector2( 578, 234 )
+states/Run/node = SubResource( 10 )
+states/Run/position = Vector2( 463, 59.1482 )
+states/Spin/node = SubResource( 13 )
+states/Spin/position = Vector2( 209.666, 271 )
+states/Win/node = SubResource( 15 )
+states/Win/position = Vector2( -12.6667, -96.6463 )
+transitions = [ "Idle", "Run", SubResource( 16 ), "Run", "Idle", SubResource( 17 ), "Idle", "Spin", SubResource( 18 ), "Spin", "Idle", SubResource( 19 ), "Run", "Spin", SubResource( 20 ), "Spin", "Run", SubResource( 21 ), "Idle", "Damage", SubResource( 22 ), "Spin", "Damage", SubResource( 23 ), "Run", "Damage", SubResource( 24 ), "Damage", "Idle", SubResource( 25 ), "Damage", "Spin", SubResource( 26 ), "Damage", "Run", SubResource( 27 ), "Run", "FallDown", SubResource( 28 ), "FallDown", "Run", SubResource( 29 ), "Idle", "FallDown", SubResource( 30 ), "FallDown", "Idle", SubResource( 31 ), "Run", "Jump", SubResource( 32 ), "Idle", "Jump", SubResource( 33 ), "Spin", "Jump", SubResource( 34 ), "Jump", "Run", SubResource( 35 ), "Jump", "Idle", SubResource( 36 ), "FallUp", "Idle", SubResource( 37 ), "FallUp", "Run", SubResource( 38 ), "FallUp", "FallDown", SubResource( 39 ), "Idle", "Death", SubResource( 40 ), "Spin", "Death", SubResource( 41 ), "Jump", "Death", SubResource( 42 ), "Run", "Death", SubResource( 43 ), "FallDown", "Death", SubResource( 44 ), "FallUp", "Death", SubResource( 45 ) ]
+start_node = "Idle"
+graph_offset = Vector2( -137, -198.313 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=47]
+
+[node name="Glb" groups=[
+"PLAYER_LISTENER",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="RestoreTimer" type="Timer" parent="." index="0"]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="4"]
+tree_root = SubResource( 46 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 47 )
+parameters/Run/BlendSpace1D/blend_position = -0.000653625
+parameters/Run/TimeScale/scale = 1.0
+parameters/Spin/TimeScale/scale = 1.0
+parameters/Win/blend_position = 0.0
+
+[connection signal="timeout" from="RestoreTimer" to="." method="_on_RestoreTimer_timeout"]

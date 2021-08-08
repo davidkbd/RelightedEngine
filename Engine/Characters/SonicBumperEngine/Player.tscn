@@ -1,0 +1,126 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Player.gd" type="Script" id=1]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/LinearVelocityArea/LinearVelocityArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/ActivationArea/ActivationArea.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/BodyCollisionArea/BodyCollisionArea.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/SpeedMultiplierArea/SpeedMultiplierArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/Statemachine.gd" type="Script" id=6]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/WalkState.gd" type="Script" id=7]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/RollState.gd" type="Script" id=8]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/SpindashState.gd" type="Script" id=9]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/SonicGlb.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/IdleState.gd" type="Script" id=11]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/DamageState.gd" type="Script" id=12]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/JumpState.gd" type="Script" id=13]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/TeleportState.gd" type="Script" id=14]
+[ext_resource path="res://Engine/BaiscMaterial/ShadowDecal.material" type="Material" id=15]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/FallState.gd" type="Script" id=16]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/DamageArea/DamageArea.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/WinState.gd" type="Script" id=18]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/Statemachine/TimeoutState.gd" type="Script" id=19]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/BounceSensor/RollBounceRaycast.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/SlideMultiplierAarea/SlideMultiplierArea.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/InvincibleManager/InvincibleManager.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Engine/Characters/SonicBumperEngine/ShieldManager/ShieldManager.tscn" type="PackedScene" id=23]
+
+[sub_resource type="RayShape" id=1]
+length = 0.5
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.25
+
+[sub_resource type="CubeMesh" id=4]
+
+[node name="Player" type="KinematicBody" groups=[
+"CAMERA_LISTENER",
+"GAME_LISTENER",
+"PLAYER",
+"PLAYER_LISTENER",
+]]
+collision_layer = 16385
+script = ExtResource( 1 )
+jump_force = 11.0
+slope_impact = 1.5
+
+[node name="Statemachine" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="IdleState" type="Node" parent="Statemachine"]
+script = ExtResource( 11 )
+
+[node name="WalkState" type="Node" parent="Statemachine"]
+script = ExtResource( 7 )
+
+[node name="JumpState" type="Node" parent="Statemachine"]
+script = ExtResource( 13 )
+
+[node name="FallState" type="Node" parent="Statemachine"]
+script = ExtResource( 16 )
+
+[node name="RollState" type="Node" parent="Statemachine"]
+script = ExtResource( 8 )
+
+[node name="SpindashState" type="Node" parent="Statemachine"]
+script = ExtResource( 9 )
+
+[node name="DamageState" type="Node" parent="Statemachine"]
+script = ExtResource( 12 )
+
+[node name="TeleportState" type="Node" parent="Statemachine"]
+script = ExtResource( 14 )
+
+[node name="WinState" type="Node" parent="Statemachine"]
+script = ExtResource( 18 )
+
+[node name="TimeoutState" type="Node" parent="Statemachine"]
+script = ExtResource( 19 )
+
+[node name="InvincibleManager" parent="." instance=ExtResource( 22 )]
+
+[node name="ShieldManager" parent="." instance=ExtResource( 23 )]
+
+[node name="Glb" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
+
+[node name="Center" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+visible = false
+
+[node name="ImpulsePoint" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+visible = false
+
+[node name="Ray" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="Body" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0 )
+shape = SubResource( 2 )
+
+[node name="BounceSensor" parent="." instance=ExtResource( 20 )]
+
+[node name="LinearVelocityArea" parent="." instance=ExtResource( 2 )]
+
+[node name="SpeedMultiplierArea" parent="." instance=ExtResource( 5 )]
+
+[node name="SlideMultiplierArea" parent="." instance=ExtResource( 21 )]
+
+[node name="ActivationArea" parent="." instance=ExtResource( 3 )]
+
+[node name="DamageArea" parent="." instance=ExtResource( 17 )]
+
+[node name="BodyCollisionArea" parent="." instance=ExtResource( 4 )]
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+aabb = AABB( -0.3, -0.5, -0.3, 0.6, 1, 0.6 )
+
+[node name="Shadow" type="MeshInstance" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, -3, 0, 0.2, -1.31134e-07, 0, -2.8, 0 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+material/0 = ExtResource( 15 )
+
+[connection signal="camera_entered" from="VisibilityNotifier" to="Statemachine/TeleportState" method="_on_VisibilityNotifier_camera_entered"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Engine/GameObjects/Basic/Monitor/DamageArea.gd" type="Script" id=1]
+[ext_resource path="res://Engine/GameObjects/Basic/Monitor/Model/Monitor.mesh" type="ArrayMesh" id=2]
+[ext_resource path="res://Engine/GameObjects/Basic/Monitor/Monitor.gd" type="Script" id=3]
+[ext_resource path="res://Engine/GameObjects/Basic/Monitor/Texture/Icons.png" type="Texture" id=4]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/HomingActivationArea/HomingActivationArea.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.25
+
+[sub_resource type="CylinderShape" id=2]
+radius = 0.4
+height = 1.0
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+params_billboard_mode = 1
+albedo_texture = ExtResource( 4 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 3.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 4 )
+
+[node name="Monitor" type="StaticBody" groups=[
+"ITEM",
+"MONITOR",
+]]
+script = ExtResource( 3 )
+model = ExtResource( 2 )
+icons = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37, 0 )
+shape = SubResource( 1 )
+
+[node name="DamageArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
+monitoring = false
+collision_layer = 0
+collision_mask = 128
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="DamageArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
+shape = SubResource( 2 )
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0 )
+material_override = SubResource( 3 )
+billboard = 1
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 3
+
+[node name="Model" type="MeshInstance" parent="."]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0 )
+use_in_baked_light = true
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="ActivationArea" parent="." instance=ExtResource( 5 )]

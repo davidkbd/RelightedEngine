@@ -1,0 +1,32 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Engine/Hud/Hud.gd" type="Script" id=6]
+[ext_resource path="res://Engine/Hud/Summary/Summary.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Engine/Hud/FadeScreen/FadeScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Engine/Hud/Title/Title.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Engine/Hud/Texture/Ranks/RankD.png" type="Texture" id=13]
+[ext_resource path="res://Engine/Hud/Texture/Ranks/RankA.png" type="Texture" id=14]
+[ext_resource path="res://Engine/Hud/Texture/Ranks/RankB.png" type="Texture" id=15]
+[ext_resource path="res://Engine/Hud/Texture/Ranks/RankS.png" type="Texture" id=16]
+[ext_resource path="res://Engine/Hud/Texture/Ranks/RankC.png" type="Texture" id=17]
+[ext_resource path="res://Engine/Hud/Texture/Ranks/RankE.png" type="Texture" id=18]
+[ext_resource path="res://Engine/Hud/PauseMenu/PauseMenu.tscn" type="PackedScene" id=19]
+
+[node name="Hud" type="Control" groups=[
+"GAME_LISTENER",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Summary" parent="." instance=ExtResource( 7 )]
+rank_sprites = [ ExtResource( 16 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 13 ), ExtResource( 18 ) ]
+
+[node name="FadeScreen" parent="." instance=ExtResource( 8 )]
+
+[node name="Title" parent="." instance=ExtResource( 9 )]
+
+[node name="PauseMenu" parent="." instance=ExtResource( 19 )]

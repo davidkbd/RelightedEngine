@@ -1,0 +1,73 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Engine/MainScenes/StartMenu/Screens/TitleScreen/TitleScreen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Engine/MainScenes/StartMenu/StartMenu.gd" type="Script" id=2]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Screens/PrincipalScreen/PrincipalScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Screens/InputMapScreen/InputMapScreen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Screens/OptionsScreen/OptionsScreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Popups/SettingsClosePopup/SettingsClosePopup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Popups/InputMapPopup/InputMapPopup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Popups/ExitPopup/ExitPopup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Slots/Slots.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Popups/DeleteSlotPopup/DeleteSlotPopup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Engine/Hud/FadeScreen/FadeScreen.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Engine/MainScenes/StartMenu/Screens/CreditsScreen/CreditsScreen.tscn" type="PackedScene" id=12]
+
+[node name="StartMenu" type="Control" groups=[
+"MENU_LISTENER",
+"SETTINGS_LISTENER",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundPosition" type="Node" parent="."]
+
+[node name="PrincipalScreen" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="Slots" parent="." instance=ExtResource( 9 )]
+visible = false
+
+[node name="OptionsScreen" parent="." instance=ExtResource( 5 )]
+visible = false
+
+[node name="CreditsScreen" parent="." instance=ExtResource( 12 )]
+
+[node name="InputMapScreen" parent="." instance=ExtResource( 4 )]
+visible = false
+
+[node name="InputMapJumpPopup" parent="." instance=ExtResource( 7 )]
+visible = false
+title = "menu.popup.input_jump.title"
+text = "menu.popup.input_jump.text"
+method_name_accept = "menu_listener_on_input_jump_entered"
+
+[node name="InputMapSpinPopup" parent="." instance=ExtResource( 7 )]
+visible = false
+title = "menu.popup.input_spin.title"
+text = "menu.popup.input_spin.text"
+method_name_accept = "menu_listener_on_input_spindash_entered"
+
+[node name="SettingsClosePopup" parent="." instance=ExtResource( 6 )]
+visible = false
+title = "menu.popup.settings.title"
+text = "menu.popup.settings.text"
+method_name_accept = "menu_listener_on_settings_popup_closed"
+
+[node name="ExitPopup" parent="." instance=ExtResource( 8 )]
+visible = false
+title = "menu.popup.exit.title"
+text = "menu.popup.exit.text"
+method_name_accept = "menu_listener_on_exit_popup_closed"
+
+[node name="DeleteSlotPopup" parent="." instance=ExtResource( 10 )]
+method_name_accept = "menu_listener_on_slots_poup_closed"
+
+[node name="TitleScreen" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="FadeScreen" parent="." instance=ExtResource( 11 )]

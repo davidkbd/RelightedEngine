@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Engine/BaiscMaterial/FireShield.material" type="Material" id=1]
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="SpatialMaterial" id=9]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+
+[sub_resource type="SphereMesh" id=10]
+material = SubResource( 9 )
+radius = 0.5
+height = 1.0
+radial_segments = 12
+rings = 8
+
+[sub_resource type="Curve" id=12]
+bake_resolution = 32
+_data = [ Vector2( 0, 0.248503 ), 0.0, 4.9535, 0, 0, Vector2( 1, 0 ), -0.81095, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=13]
+colors = PoolColorArray( 1, 0, 0, 0.564706, 1, 0, 0, 0 )
+
+[node name="FireShield" type="MeshInstance"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
+use_in_baked_light = true
+mesh = SubResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.25
+local_coords = false
+mesh = SubResource( 10 )
+gravity = Vector3( 0, 0, 0 )
+scale_amount_curve = SubResource( 12 )
+color_ramp = SubResource( 13 )

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Bumper.obj-5d791a1e6c31e37d68f11fa6dc17a8ab.mesh"
+
+[deps]
+
+files=[ "res://.import/Bumper.obj-5d791a1e6c31e37d68f11fa6dc17a8ab.mesh" ]
+
+source_file="res://Engine/GameObjects/Basic/Bumper/Mesh/Bumper.obj"
+dest_files=[ "res://.import/Bumper.obj-5d791a1e6c31e37d68f11fa6dc17a8ab.mesh", "res://.import/Bumper.obj-5d791a1e6c31e37d68f11fa6dc17a8ab.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Floor" type="GridMap"]
+use_in_baked_light = true
+cell_size = Vector3( 1, 0.5, 1 )
+cell_center_y = false
+collision_layer = 1025
+data = {
+"cells": PoolIntArray(  )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}

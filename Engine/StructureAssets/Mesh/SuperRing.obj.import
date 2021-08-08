@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/SuperRing.obj-447cbf117d74511e648e71e82564edcc.mesh"
+
+[deps]
+
+files=[ "res://.import/SuperRing.obj-447cbf117d74511e648e71e82564edcc.mesh" ]
+
+source_file="res://Engine/StructureAssets/Mesh/SuperRing.obj"
+dest_files=[ "res://.import/SuperRing.obj-447cbf117d74511e648e71e82564edcc.mesh", "res://.import/SuperRing.obj-447cbf117d74511e648e71e82564edcc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 0.1, 0.1, 0.1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

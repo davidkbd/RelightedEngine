@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Engine/ParticleSystems/Spawn/Material/SpawnParticles.material" type="Material" id=1]
+[ext_resource path="res://Engine/ParticleSystems/Spawn/SpawnParticles.gd" type="Script" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0.5 ), 0.0, 0.0, 0, 0, Vector2( 0.848425, 1 ), 0.158433, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="SpawnParticles" type="CPUParticles"]
+material_override = ExtResource( 1 )
+lifetime = 0.5
+randomness = 0.54
+local_coords = false
+mesh = SubResource( 1 )
+emission_shape = 2
+emission_box_extents = Vector3( 0.2, 0.2, 0.4 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 0.6
+linear_accel = -0.5
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 2 )
+script = ExtResource( 2 )

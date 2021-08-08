@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/flickly.obj-118a4fc1e16f095ad994036f5c99feb3.mesh"
+
+[deps]
+
+files=[ "res://.import/flickly.obj-118a4fc1e16f095ad994036f5c99feb3.mesh" ]
+
+source_file="res://Engine/GameObjects/Lifecycle/Flicky/Mesh/flickly.obj"
+dest_files=[ "res://.import/flickly.obj-118a4fc1e16f095ad994036f5c99feb3.mesh", "res://.import/flickly.obj-118a4fc1e16f095ad994036f5c99feb3.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

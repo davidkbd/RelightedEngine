@@ -1,0 +1,243 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://Engine/Characters/Sonic/Player.gd" type="Script" id=1]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/LinearVelocityArea/LinearVelocityArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Engine/Characters/Sonic/ActivationArea.gd" type="Script" id=3]
+[ext_resource path="res://Engine/Characters/Sonic/BodyCollisionArea.gd" type="Script" id=4]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/SpeedMultiplierArea/SpeedMultiplierArea.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/Statemachine.gd" type="Script" id=6]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/IdleState.gd" type="Script" id=7]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/RollState.gd" type="Script" id=8]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/TeleportState.gd" type="Script" id=9]
+[ext_resource path="res://Engine/Characters/Sonic/SonicGlb.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/WalkState.gd" type="Script" id=11]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/WinState.gd" type="Script" id=12]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/JumpState.gd" type="Script" id=13]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/DamageState.gd" type="Script" id=14]
+[ext_resource path="res://Engine/BaiscMaterial/ShadowDecal.material" type="Material" id=15]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/FallState.gd" type="Script" id=16]
+[ext_resource path="res://Engine/Characters/Sonic/DamageArea.gd" type="Script" id=17]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/TimeoutState.gd" type="Script" id=18]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/SpindashState.gd" type="Script" id=19]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/BounceSensor/RollBounceRaycast.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/SlideMultiplierAarea/SlideMultiplierArea.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Engine/Characters/Sonic/InvincibleManager/InvincibleManager.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Engine/Characters/Sonic/ShieldManager/ShieldManager.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/DeathState.gd" type="Script" id=24]
+[ext_resource path="res://Engine/Characters/Sonic/Sfx/Sfx.gd" type="Script" id=25]
+[ext_resource path="res://Engine/GameObjects/Core/Shield/BasicShield.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Engine/GameObjects/Core/Shield/FireShield.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Engine/GameObjects/Core/Shield/BubbleShield.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Engine/GameObjects/Core/Shield/IceShield.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Engine/GameObjects/Core/Shield/ElectricShield.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/WaterSurfaceFootArea/WaterSurfaceFootArea.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/BubbleJumpState.gd" type="Script" id=32]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/ElectricJumpState.gd" type="Script" id=33]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/FireJumpState.gd" type="Script" id=34]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/BubbleDropState.gd" type="Script" id=35]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/BubbleFallState.gd" type="Script" id=36]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/ElectricFallState.gd" type="Script" id=37]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/FireHommingState.gd" type="Script" id=38]
+[ext_resource path="res://Engine/Characters/Sonic/Statemachine/FireFallState.gd" type="Script" id=39]
+[ext_resource path="res://Engine/GameObjects/Core/Trigger/Player/WaterSurfaceNoseArea/WaterSurfaceNoseArea.tscn" type="PackedScene" id=40]
+
+[sub_resource type="RayShape" id=1]
+length = 0.5
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.25
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape" id=4]
+radius = 0.3
+
+[sub_resource type="CubeMesh" id=5]
+
+[node name="Player" type="KinematicBody" groups=[
+"CAMERA_LISTENER",
+"GAME_LISTENER",
+"PLAYER",
+"PLAYER_LISTENER",
+]]
+collision_layer = 16385
+collision_mask = 16385
+script = ExtResource( 1 )
+speed = 3.0
+speed_per_ring = 0.0
+jump_force = 11.0
+
+[node name="Statemachine" type="Node" parent="."]
+script = ExtResource( 6 )
+
+[node name="IdleState" type="Node" parent="Statemachine"]
+script = ExtResource( 7 )
+
+[node name="WalkState" type="Node" parent="Statemachine"]
+script = ExtResource( 11 )
+
+[node name="NormalJumpState" type="Node" parent="Statemachine"]
+script = ExtResource( 13 )
+
+[node name="FireJumpState" type="Node" parent="Statemachine"]
+script = ExtResource( 34 )
+
+[node name="ElectricJumpState" type="Node" parent="Statemachine"]
+script = ExtResource( 33 )
+
+[node name="BubbleJumpState" type="Node" parent="Statemachine"]
+script = ExtResource( 32 )
+
+[node name="FireHommingState" type="Node" parent="Statemachine"]
+script = ExtResource( 38 )
+
+[node name="BubbleDropState" type="Node" parent="Statemachine"]
+script = ExtResource( 35 )
+
+[node name="NormalFallState" type="Node" parent="Statemachine"]
+script = ExtResource( 16 )
+
+[node name="FireFallState" type="Node" parent="Statemachine"]
+script = ExtResource( 39 )
+
+[node name="ElectricFallState" type="Node" parent="Statemachine"]
+script = ExtResource( 37 )
+
+[node name="BubbleFallState" type="Node" parent="Statemachine"]
+script = ExtResource( 36 )
+
+[node name="RollState" type="Node" parent="Statemachine"]
+script = ExtResource( 8 )
+
+[node name="SpindashState" type="Node" parent="Statemachine"]
+script = ExtResource( 19 )
+
+[node name="DamageState" type="Node" parent="Statemachine"]
+script = ExtResource( 14 )
+
+[node name="TeleportState" type="Node" parent="Statemachine"]
+script = ExtResource( 9 )
+
+[node name="WinState" type="Node" parent="Statemachine"]
+script = ExtResource( 12 )
+
+[node name="TimeoutState" type="Node" parent="Statemachine"]
+script = ExtResource( 18 )
+
+[node name="DeathState" type="Node" parent="Statemachine"]
+script = ExtResource( 24 )
+
+[node name="InvincibleManager" parent="." instance=ExtResource( 22 )]
+
+[node name="ShieldManager" parent="." instance=ExtResource( 23 )]
+
+[node name="Glb" parent="." instance=ExtResource( 10 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="Vfx" type="Spatial" parent="."]
+script = ExtResource( 25 )
+
+[node name="ShieldLight" type="OmniLight" parent="Vfx"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
+omni_range = 3.0
+omni_attenuation = 1.5
+
+[node name="BasicShield" parent="Vfx" instance=ExtResource( 26 )]
+visible = false
+
+[node name="FireShield" parent="Vfx" instance=ExtResource( 27 )]
+visible = false
+
+[node name="ElectricShield" parent="Vfx" instance=ExtResource( 30 )]
+visible = false
+
+[node name="BubbleShield" parent="Vfx" instance=ExtResource( 28 )]
+visible = false
+
+[node name="IceShield" parent="Vfx" instance=ExtResource( 29 )]
+visible = false
+
+[node name="Center" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+visible = false
+
+[node name="ImpulsePoint" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+
+[node name="Ray" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="Body" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0 )
+shape = SubResource( 2 )
+
+[node name="BounceSensor" parent="." instance=ExtResource( 20 )]
+
+[node name="WaterSurfaceFootArea" parent="." instance=ExtResource( 31 )]
+
+[node name="WaterSurfaceNoseArea" parent="." instance=ExtResource( 40 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0 )
+
+[node name="LinearVelocityArea" parent="." instance=ExtResource( 2 )]
+
+[node name="SpeedMultiplierArea" parent="." instance=ExtResource( 5 )]
+
+[node name="SlideMultiplierArea" parent="." instance=ExtResource( 21 )]
+
+[node name="ActivationArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
+monitorable = false
+collision_layer = 256
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ActivationArea"]
+shape = SubResource( 3 )
+
+[node name="DamageArea" type="Area" parent="." groups=[
+"PLAYER_LISTENER",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+monitorable = false
+collision_layer = 64
+collision_mask = 0
+script = ExtResource( 17 )
+
+[node name="RestoreTimer" type="Timer" parent="DamageArea"]
+wait_time = 2.0
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape" parent="DamageArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0 )
+shape = SubResource( 4 )
+
+[node name="BodyCollisionArea" type="Area" parent="."]
+process_priority = 1
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+collision_layer = 128
+collision_mask = 128
+script = ExtResource( 4 )
+
+[node name="CollisionShape" type="CollisionShape" parent="BodyCollisionArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0 )
+shape = SubResource( 4 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+aabb = AABB( -0.3, -0.5, -0.3, 0.6, 1, 0.6 )
+
+[node name="Shadow" type="MeshInstance" parent="."]
+transform = Transform( 0.2, 0, 0, 0, -8.74228e-09, -3, 0, 0.2, -1.31134e-07, 0, -2.8, 0 )
+cast_shadow = 0
+mesh = SubResource( 5 )
+material/0 = ExtResource( 15 )
+
+[connection signal="area_entered" from="ActivationArea" to="ActivationArea" method="_on_ActivationArea_area_entered"]
+[connection signal="area_exited" from="ActivationArea" to="ActivationArea" method="_on_ActivationArea_area_exited"]
+[connection signal="area_entered" from="DamageArea" to="DamageArea" method="_on_DamageArea_area_entered"]
+[connection signal="timeout" from="DamageArea/RestoreTimer" to="DamageArea" method="_on_RestoreTimer_timeout"]
+[connection signal="area_entered" from="BodyCollisionArea" to="BodyCollisionArea" method="_on_BodyCollisionArea_area_entered"]
+[connection signal="camera_entered" from="VisibilityNotifier" to="Statemachine/TeleportState" method="_on_VisibilityNotifier_camera_entered"]

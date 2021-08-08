@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="Walls" type="GridMap"]
+use_in_baked_light = true
+cell_size = Vector3( 1, 0.5, 1 )
+cell_center_y = false
+collision_layer = 2049
+data = {
+"cells": PoolIntArray(  )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
