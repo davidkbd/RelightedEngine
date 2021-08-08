@@ -18,10 +18,9 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-show_pointer = 1.0
 
 [node name="OptionPointer" type="TextureRect" parent="."]
-margin_right = 72.0
+margin_right = 32.0
 margin_bottom = 600.0
 size_flags_vertical = 3
 texture = ExtResource( 2 )
@@ -31,7 +30,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 76.0
+margin_left = 36.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_horizontal = 3

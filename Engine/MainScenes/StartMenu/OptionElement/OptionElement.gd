@@ -7,17 +7,18 @@ signal pressed
 
 enum Alignment {
 	LEFT,
-	CENTER
+	CENTER,
+	RIGHT
 }
 
 export(Alignment) var alignment : int = Alignment.LEFT setget set_alignment, get_alignment
-export(bool)   var show_pointer : float = true
+export(bool)   var show_pointer : bool = true
 export(String) var text : String
 export(String) var method_name : String
 
 onready var exec_tween         : Tween   = $ExecTween
-onready var pointer_ok_texture : Texture = load("res://Engine/MainScenes/StartMenu/Textures/OptionPointerOn.png")
-onready var pointer_no_texture : Texture = load("res://Engine/MainScenes/StartMenu/Textures/OptionPointerOff.png")
+onready var pointer_ok_texture : Texture = load(EngineConfig.MENU_POINTER_SELECTED_IMAGE_FILE)
+onready var pointer_no_texture : Texture = load(EngineConfig.MENU_POINTER_UNSELECTED_IMAGE_FILE)
 
 func set_alignment(new_value : int):
 	alignment = new_value
@@ -31,9 +32,11 @@ func select():
 		$OptionPointer.texture = pointer_ok_texture
 	else:
 		unselect()
+	$Label.modulate = EngineConfig.MENU_POINTER_SELECTED_MODULATE
 
 func unselect():
 	$OptionPointer.texture = pointer_no_texture
+	$Label.modulate = Color.white
 
 func execute():
 	if method_name == "": return
@@ -50,6 +53,7 @@ func _update_alignment():
 	match alignment:
 		Alignment.LEFT: $Label.align = Label.ALIGN_LEFT
 		Alignment.CENTER: $Label.align = Label.ALIGN_CENTER
+		Alignment.RIGHT: $Label.align = Label.ALIGN_RIGHT
 
 func _ready():
 	unselect()

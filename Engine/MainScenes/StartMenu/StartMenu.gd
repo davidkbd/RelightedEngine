@@ -87,10 +87,13 @@ func _close_popup(popup : MenuPopup):
 	popup.stop()
 	current_screen.resume()
 
-func _instance_background():
-	add_child_below_node(
-			$BackgroundPosition,
-			load(EngineConfig.MENU_BACKGROUND_CONTROLLER).instance())
+func _instance_controllers():
+	for controller in [
+		EngineConfig.MENU_BACKGROUND_CONTROLLER,
+		EngineConfig.MENU_MUSIC_CONTROLLER]:
+		add_child_below_node(
+				$ControllersPosition,
+				load(controller).instance())
 
 func _ready():
 	get_tree().call_deferred(
@@ -98,6 +101,5 @@ func _ready():
 			"MENU_LISTENER",
 			"menu_listener_on_opened")
 	call_deferred("_open", current_screen)
-	MusicSystem.play(EngineConfig.MENU_MUSIC_FILE, 4.0)
-	_instance_background()
+	_instance_controllers()
 

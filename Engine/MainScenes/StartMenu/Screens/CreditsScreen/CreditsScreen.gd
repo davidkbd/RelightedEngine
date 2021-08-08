@@ -12,7 +12,7 @@ func _animation_end_stop():
 
 func initialize_options():
 	options = [
-			$Options/Back
+			$Back
 			]
 func _any_button_pressed():
 	.set_process(false)

@@ -4,8 +4,9 @@ onready var _stream_players : Array = _create_stream_players()
 onready var _fade_tween     : Tween = _create_fade_tween()
 
 func play(stream_file : String, fade_duration : float = 1.0):
-	_fade_tween.stop_all()
-	_fade_tween.resume_all()
+	if _fade_tween.is_active():
+		_fade_tween.remove_all()
+		_on_cross_fade_completed()
 	_stream_players[0].volume_db = -80.0
 	_fade_tween.interpolate_property(
 			_stream_players[0], "volume_db",

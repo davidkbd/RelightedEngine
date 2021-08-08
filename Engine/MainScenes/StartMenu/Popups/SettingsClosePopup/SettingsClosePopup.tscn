@@ -93,20 +93,22 @@ alignment = 1
 [node name="Yes" parent="Options" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 285.0
+margin_right = 305.0
 margin_bottom = 600.0
 alignment = 1
 alignment = 1
+show_pointer = false
 text = "menu.popup.save"
 method_name = "menu_listener_on_options_popup_accepted"
 
 [node name="No" parent="Options" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 289.0
-margin_right = 626.0
+margin_left = 309.0
+margin_right = 614.0
 margin_bottom = 600.0
 alignment = 1
 alignment = 1
+show_pointer = false
 text = "menu.popup.dontsave"
 method_name = "menu_listener_on_options_popup_cancelled"

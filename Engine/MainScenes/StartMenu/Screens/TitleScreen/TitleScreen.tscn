@@ -57,10 +57,10 @@ __meta__ = {
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
-margin_bottom = 72.0
+margin_bottom = 37.0
 alignment = 1
 alignment = 1
-show_pointer = 0.0
+show_pointer = false
 text = "menu.start"
 method_name = "menu_listener_on_principal_opened"
 

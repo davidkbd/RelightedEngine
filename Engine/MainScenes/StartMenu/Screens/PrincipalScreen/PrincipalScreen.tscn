@@ -131,8 +131,8 @@ __meta__ = {
 }
 
 [node name="Options" type="VBoxContainer" parent="."]
-anchor_left = 0.35
-anchor_top = 0.2
+anchor_left = 0.83
+anchor_top = 0.72
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -144,35 +144,35 @@ __meta__ = {
 [node name="Play" parent="Options" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 665.0
-margin_bottom = 72.0
+margin_right = 198.0
+margin_bottom = 37.0
 text = "menu.play"
 method_name = "menu_listener_on_slots_opened"
 
 [node name="Options" parent="Options" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 76.0
-margin_right = 665.0
-margin_bottom = 148.0
+margin_top = 41.0
+margin_right = 198.0
+margin_bottom = 78.0
 text = "menu.options"
 method_name = "menu_listener_on_options_opened"
 
 [node name="Credits" parent="Options" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 152.0
-margin_right = 665.0
-margin_bottom = 224.0
+margin_top = 82.0
+margin_right = 198.0
+margin_bottom = 119.0
 text = "menu.credits"
 method_name = "menu_listener_on_credits_opened"
 
 [node name="Exit" parent="Options" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 228.0
-margin_right = 665.0
-margin_bottom = 300.0
+margin_top = 123.0
+margin_right = 198.0
+margin_bottom = 160.0
 text = "menu.exit"
 method_name = "menu_listener_on_quit"
 

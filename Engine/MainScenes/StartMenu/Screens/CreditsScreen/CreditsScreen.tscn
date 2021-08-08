@@ -59,7 +59,6 @@ tracks/1/keys = {
 [node name="CreditsScreen" type="Control" groups=[
 "MENU_LISTENER",
 ]]
-visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -81,21 +80,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Options" type="VBoxContainer" parent="."]
-anchor_left = 0.35
-anchor_top = 0.2
-anchor_right = 1.0
-anchor_bottom = 1.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Back" parent="Options" instance=ExtResource( 2 )]
-margin_top = 272.0
-margin_right = 665.0
-margin_bottom = 344.0
+[node name="Back" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.6
+anchor_top = 0.9
+margin_right = -20.0
+alignment = 2
+alignment = 2
+show_pointer = false
 text = "menu.back"
 method_name = "menu_listener_on_credits_closed"
 
@@ -103,4 +94,4 @@ method_name = "menu_listener_on_credits_closed"
 anims/start = SubResource( 2 )
 anims/stop = SubResource( 3 )
 
-[connection signal="pressed" from="Options/Back" to="." method="_any_button_pressed"]
+[connection signal="pressed" from="Back" to="." method="_any_button_pressed"]
